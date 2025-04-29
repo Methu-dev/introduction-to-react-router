@@ -1,10 +1,14 @@
 import { Outlet } from "react-router"
+import Heder from "../Heder/Heder"
+import Footer from "../Footer/Footer"
 
 const Home = () => {
   return (
     <div>
-      <h1>How is possible man</h1>
+
+        <Heder />
       <Outlet/>
+      <Footer />
     </div>
   )
 }
