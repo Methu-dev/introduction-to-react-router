@@ -10,25 +10,32 @@ import Home from './Components/Home/Home.jsx';
 import About from './Components/About/About.jsx';
 import Contact from './Components/Contact/Contact.jsx';
 import User from './Components/Usesr/User.jsx';
+import UserDetails from './Components/UserDetails/UserDetails.jsx';
 
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: <Home/>,
+    path: "/",
+    element: <Home />,
     children: [
       {
-        path: '/about',
-        element: <About/>,
+        path: "/about",
+        element: <About />,
       },
       {
-        path: '/contact',
-        element: <Contact/>,
+        path: "/contact",
+        element: <Contact />,
       },
       {
-        path: '/user',
-        loader: ()=>fetch('https://jsonplaceholder.typicode.com/users'),
-        element: <User/>
-      }
+        path: "/user",
+        loader: () => fetch("https://jsonplaceholder.typicode.com/users"),
+        element: <User />,
+      },
+      {
+        path: "/user/:userId",
+        loader: ({ params }) =>
+          fetch(`https://jsonplaceholder.typicode.com/users/${params.userId}`),
+        element: <UserDetails/>
+      },
     ],
   },
 ]);
